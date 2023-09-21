@@ -1,0 +1,9 @@
+.errortag{
+  @apply text-sm text-red-500 w-[380px] font-primary_poppins my-2 ml-2  capitalize 
+}
+.strongTag {
+  @apply text-sm text-green-500 w-[380px] font-primary_poppins my-2 ml-2 flex items-center  capitalize
+}
+.strongTag .stringIcon{
+  @apply mr-[5px]
+}
