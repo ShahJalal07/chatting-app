@@ -7,3 +7,29 @@
 .strongTag .stringIcon{
   @apply mr-[5px]
 }
+::-webkit-scrollbar{
+  @apply w-[10px]
+}
+::-webkit-scrollbar-track{
+   @apply bg-transparent
+}
+::-webkit-scrollbar-thumb{
+   @apply bg-third-blue rounded-full py-[5px] 
+}
+/* title starts */
+.item_box{
+  @apply w-[32.5%] gap-5 relative 
+}
+.item {
+  @apply w-[100%] px-4 pb-4 border-2  mb-5 rounded-md shadow-lg h-[426px] overflow-y-scroll ;
+}
+.title {
+  @apply flex items-center justify-between bg-third-blue  sticky top-0 left-0 shadow-lg p-[5px] rounded-lg mt-4
+}
+.title h2 {
+  @apply text-2xl font-semibold capitalize text-primary-white font-primary_poppins;
+}
+.title svg {
+  @apply text-3xl text-primary-white;
+}
+/* title end */

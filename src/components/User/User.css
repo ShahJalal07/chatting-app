@@ -1,0 +1,22 @@
+.user_box{
+    @apply border-b-2 border-x-third-blue
+}
+
+.user_list{
+    @apply flex justify-between items-center my-[15px] 
+}
+.user{
+    @apply flex items-center
+}
+.user_img{
+    @apply w-[60px] h-[60px] rounded-full bg-slate-900
+}
+.user_name{
+    @apply pl-3
+}
+.user_box h4{
+    @apply text-[15px] font-secondary_roboto font-bold capitalize 
+}
+.user_box h5{
+    @apply text-[10px] font-secondary_roboto font-bold  capitalize
+}

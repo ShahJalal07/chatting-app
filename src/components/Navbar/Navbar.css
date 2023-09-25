@@ -1,0 +1,26 @@
+.navbar {
+  @apply rounded-[20px] m-[20px] bg-third-blue py-[20px] sticky top-0 left-0 z-[9] ; 
+}
+.nav-content {
+  @apply container flex items-center justify-between mx-auto;
+}
+nav .profileName {
+  @apply flex items-center gap-5;
+}
+nav .profileName img {
+  @apply w-[70px] h-[70px] bg-secondary-light-blue rounded-full overflow-hidden object-cover;
+}
+nav .profileName h1 {
+  @apply text-2xl font-semibold capitalize font-primary_poppins text-primary-white;
+}
+nav .manu_items {
+  @apply flex gap-7;
+}
+nav .manu_items svg {
+  @apply text-2xl ease-in-out hover:text-secondary-light-blue duration-[.3s] text-primary-white;
+}
+nav .manu_items .logout {
+  @apply pl-[50px];
+}
+
+

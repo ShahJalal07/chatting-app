@@ -1,0 +1,31 @@
+.mygroupDateTime{
+    @apply flex items-center
+}
+.mygroupday{
+    @apply font-secondary_roboto font-medium pr-1
+}
+.mygrouptime{
+    @apply font-secondary_roboto font-medium
+}
+.mygroup_box{
+    @apply border-b-2 border-x-third-blue
+}
+
+.mygroup_list{
+    @apply flex justify-between items-center my-[15px] 
+}
+.mygroup{
+    @apply flex items-center
+}
+.mygroup_img{
+    @apply w-[60px] h-[60px] rounded-full bg-slate-900
+}
+.mygroup_name{
+    @apply pl-3
+}
+.mygroup_box h4{
+    @apply text-[15px] font-secondary_roboto font-bold capitalize 
+}
+.mygroup_box h5{
+    @apply text-[10px] font-secondary_roboto font-bold  capitalize
+}

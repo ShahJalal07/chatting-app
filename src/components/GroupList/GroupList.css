@@ -1,0 +1,16 @@
+.group_box{
+    @apply border-b-2 border-x-third-blue
+}
+.group_list{
+    @apply flex justify-between items-center my-[15px] 
+}
+.group_img{
+    @apply w-[60px] h-[60px] rounded-full bg-slate-900
+}
+.group_box h4{
+    @apply text-[15px] font-secondary_roboto font-bold capitalize 
+}
+.group_box h5{
+    @apply text-[10px] font-secondary_roboto font-bold opacity-60 capitalize
+}
+

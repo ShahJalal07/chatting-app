@@ -12,17 +12,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { userLogingInfo } from "../../slices/userSlice";
 const SignUpSignIn = () => {
   // privet route start
-  const data = useSelector((state)=>state.userLogingInfo.userInfo)
+  const data = useSelector((state) => state.userLogingInfo.userInfo);
   useEffect(() => {
-  if(data){
-  navigate("/home")
-  }
-  
-  }, [])
-// privet route end
+    if (data) {
+      navigate("/home");
+    }
+  }, []);
+  // privet route end
 
   // redux dispatch starts
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   // redux dispatch end
   const [open, setOpen] = useState(false);
 
@@ -182,8 +181,7 @@ const SignUpSignIn = () => {
           setpassword("");
           setConfirmpass("");
           // navigate("/home")
-          setOpen(false)
-
+          setOpen(false);
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -239,8 +237,8 @@ const SignUpSignIn = () => {
           console.log(user);
           setLoader(false);
           navigate("/home");
-          dispatch(userLogingInfo(user))
-          localStorage.setItem("user", JSON.stringify(user))
+          dispatch(userLogingInfo(user));
+          localStorage.setItem("user", JSON.stringify(user));
         })
         .catch((error) => {
           setLoader(false);
