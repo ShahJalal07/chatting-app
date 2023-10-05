@@ -1,5 +1,5 @@
 .main_content {
-  @apply flex p-2 justify-between flex-wrap m-[20px];
+  @apply flex p-2 justify-between flex-wrap m-[20px] ;
 }
 .group_item {
   @apply w-[100%] px-4 pb-4 border-2  mb-5 rounded-md shadow-lg h-[340px] overflow-y-scroll ;
@@ -19,3 +19,5 @@
 .main_content .searchbar {
   @apply w-[32.5%];
 }
+
+

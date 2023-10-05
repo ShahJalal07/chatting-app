@@ -1,5 +1,5 @@
 .forgotpage {
-  @apply h-screen bg-third-blue flex justify-center items-center;
+  @apply flex items-center justify-center h-screen bg-third-blue;
 }
 .forget-box {
   @apply relative bg-primary-white flex justify-between items-center w-[900px] h-[600px] shadow-[0px_0px_5px_0px_rgba(0,0,0,0.75)] px-[50px];

@@ -4,7 +4,7 @@ import forget from "../animation/forget.json";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
-import { useSelector } from "react-redux";
+
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
@@ -41,13 +41,8 @@ const ForgotPassword = () => {
   };
 
   // privet route
-  const data = useSelector((state) => state.userLogingInfo.userInfo);
-  console.log(data);
-  useEffect(() => {
-    if (data) {
-      navigate("/home");
-    }
-  }, []);
+  
+  
   return (
     <div className="forgotpage">
       <div className="forget-box">

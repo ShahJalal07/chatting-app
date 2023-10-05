@@ -1,24 +1,36 @@
 import "./Navbar.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AiFillHome, AiFillSetting } from "react-icons/ai";
-import { BsFillChatDotsFill } from "react-icons/bs";
+import { BsFillChatDotsFill, BsFillCloudUploadFill } from "react-icons/bs";
 import { IoMdNotifications } from "react-icons/io";
 import { IoLogOut } from "react-icons/io5";
 import { FaUserCircle } from "react-icons/fa";
 import { getAuth, signOut } from "firebase/auth";
-import { useDispatch } from "react-redux";
-import { userLogingInfo } from "../../slices/userSlice";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { blurClassAdd } from "../../slices/userSlice";
+import { userLoginInfo } from "../../slices/userSlice";
+
 const Navbar = () => {
+  const blur = useSelector((state) => state.userInfo.blur);
+  const data = useSelector((state) => state.userInfo.userInfo);
+
+  const dispatch = useDispatch();
+  console.log(blur);
   const auth = getAuth();
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
+  const navigate = useNavigate();
+
+  const handelModel = () => {
+    console.log(blur);
+    dispatch(blurClassAdd(true));
+  };
+
   const handelSignOut = () => {
     signOut(auth)
       .then(() => {
-        console.log("sucssful logout");
-        navigate("/")
-        dispatch(userLogingInfo(null))
-        localStorage.removeItem("user")
+        navigate("/");
+        dispatch(userLoginInfo(null));
+        localStorage.removeItem("user");
       })
       .catch((error) => {
         console.log(error.code);
@@ -28,32 +40,74 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="nav-content">
-        <div className="profileName">
-        <img  src="" alt="profile" />
+        <div className="profileArea">
+          <div className="profileImg ">
+          <h2 className="defaultProfile">{data?.displayName[0]}</h2>
 
-          <h1>Md Shah Jalal</h1>
-        </div>
+            <img className="" src={data?.photoURL} alt="profile" />
 
-        <div className="manu_items">
-          <Link to="/">
-            {" "}
-            <AiFillHome />{" "}
-          </Link>
-          <Link to="/chat">
-            <BsFillChatDotsFill />
-          </Link>
-          <Link to="/notification">
-            <IoMdNotifications />
-          </Link>
-          <Link to="/setting">
-            <AiFillSetting />
-          </Link>
-          <div className="logout">
-            <Link to="">
-              <IoLogOut onClick={handelSignOut} />
-            </Link>
+            <div onClick={handelModel} className="overlay">
+              <BsFillCloudUploadFill className="uploadIcon" />
+            </div>
           </div>
+
+          {/* <div className="profileImg">
+          <img className="" src="" alt="profile" />
+          </div> */}
+
+          <h1>{data?.displayName}</h1>
         </div>
+
+        <ul className="manu_items">
+          <li>
+            <NavLink
+              className={({ isActive, isPending }) =>
+                isPending ? "" : isActive ? "active" : "no_active"
+              }
+            >
+              <AiFillHome to="/home" />{" "}
+            </NavLink>{" "}
+          </li>
+
+          <li>
+            <NavLink
+              to="/chat"
+              className={({ isActive, isPending }) =>
+                isPending ? "" : isActive ? "active" : "no_active"
+              }
+            >
+              <BsFillChatDotsFill />{" "}
+            </NavLink>{" "}
+          </li>
+
+          <li>
+            <NavLink
+              to="/notification"
+              className={({ isActive, isPending }) =>
+                isPending ? "" : isActive ? "active" : "no_active"
+              }
+            >
+              <IoMdNotifications />{" "}
+            </NavLink>{" "}
+          </li>
+          <li>
+            <NavLink
+              to="/setting"
+              className={({ isActive, isPending }) =>
+                isPending ? "" : isActive ? "active" : "no_active"
+              }
+            >
+              <AiFillSetting />{" "}
+            </NavLink>{" "}
+          </li>
+          <div className="logout .no_active">
+            <li>
+              <Link to="">
+                <IoLogOut className="log_out .no_active" onClick={handelSignOut} />
+              </Link>
+            </li>
+          </div>
+        </ul>
       </div>
     </nav>
   );

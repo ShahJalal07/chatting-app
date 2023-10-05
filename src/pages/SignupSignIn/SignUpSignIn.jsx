@@ -5,24 +5,30 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  updateProfile,
 } from "firebase/auth";
 import { Vortex } from "react-loader-spinner";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { userLogingInfo } from "../../slices/userSlice";
+import { userLoginInfo } from "../../slices/userSlice";
+import { getDatabase, ref, set } from "firebase/database";
+
 const SignUpSignIn = () => {
   // privet route start
-  const data = useSelector((state) => state.userLogingInfo.userInfo);
+
+  const data = useSelector((state) => state.userInfo.userInfo);
   useEffect(() => {
     if (data) {
       navigate("/home");
     }
-  }, []);
+  });
   // privet route end
 
   // redux dispatch starts
   const dispatch = useDispatch();
   // redux dispatch end
+
+  // sign in, sign up open close state
   const [open, setOpen] = useState(false);
 
   // sing-up and sing-in open close start
@@ -58,6 +64,7 @@ const SignUpSignIn = () => {
       setLockopen3(false);
     }, 1000);
   };
+
   // resistation start
 
   // username
@@ -142,6 +149,8 @@ const SignUpSignIn = () => {
   // auth start
   const auth = getAuth();
   // auth end
+  const db = getDatabase();
+
   const handelSingUp = (e) => {
     e.preventDefault();
     if (!user) {
@@ -173,15 +182,33 @@ const SignUpSignIn = () => {
       setConfirmpass("");
       createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
-          const user = userCredential.user;
-          console.log(user);
-          setLoader(false);
-          setUser("");
-          setEmail("");
-          setpassword("");
-          setConfirmpass("");
-          // navigate("/home")
-          setOpen(false);
+          // update profile
+          updateProfile(auth.currentUser, {
+            displayName: user,
+            photoURL: "https://example.com/jane-q-user/profile.jpg",
+          })
+            .then(() => {
+              const user = userCredential.user;
+              console.log(user);
+              setLoader(false);
+              setUser("");
+              setEmail("");
+              setpassword("");
+              setConfirmpass("");
+              // navigate("/home")
+              setOpen(false);
+            })
+            .then (()=>{
+              set(ref(db, 'users/' ), {
+                username: user,
+                email: email,
+                // profile_picture : imageUrl
+              });
+            })
+            .catch((error) => {
+              console.log(error.code);
+              console.log(error.message);
+            });
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -237,7 +264,7 @@ const SignUpSignIn = () => {
           console.log(user);
           setLoader(false);
           navigate("/home");
-          dispatch(userLogingInfo(user));
+          dispatch(userLoginInfo(user));
           localStorage.setItem("user", JSON.stringify(user));
         })
         .catch((error) => {
