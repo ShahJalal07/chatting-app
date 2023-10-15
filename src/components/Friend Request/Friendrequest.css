@@ -11,6 +11,9 @@
 .friendreq_img{
     @apply w-[60px] h-[60px] rounded-full bg-slate-900
 }
+.friendreq_img img{
+    @apply w-full h-full rounded-full object-cover overflow-hidden
+}
 .friendreq_name{
     @apply pl-3
 }

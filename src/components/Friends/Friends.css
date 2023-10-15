@@ -9,7 +9,10 @@
     @apply flex items-center
 }
 .friends_img{
-    @apply w-[60px] h-[60px] rounded-full bg-slate-900
+    @apply w-[60px] h-[60px]
+}
+.friends_img img{
+    @apply w-full h-full rounded-full object-cover
 }
 .friends_name{
     @apply pl-3

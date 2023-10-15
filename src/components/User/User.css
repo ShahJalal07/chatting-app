@@ -11,6 +11,9 @@
 .user_img{
     @apply w-[60px] h-[60px] rounded-full bg-slate-900
 }
+.user_img img{
+    @apply w-[100%] h-[100%] overflow-hidden object-cover rounded-full
+}
 .user_name{
     @apply pl-3
 }
@@ -18,5 +21,5 @@
     @apply text-[15px] font-secondary_roboto font-bold capitalize 
 }
 .user_box h5{
-    @apply text-[10px] font-secondary_roboto font-bold  capitalize
+    @apply text-[10px] font-secondary_roboto font-bold lowercase
 }

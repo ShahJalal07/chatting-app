@@ -42,9 +42,9 @@ const Navbar = () => {
       <div className="nav-content">
         <div className="profileArea">
           <div className="profileImg ">
-          <h2 className="defaultProfile">{data?.displayName[0]}</h2>
+            <h2 className="defaultProfile">{data?.displayName[0]}</h2>
 
-            <img className="" src={data?.photoURL} alt="profile" />
+            <img className="" src={data?.photoURL} alt="" />
 
             <div onClick={handelModel} className="overlay">
               <BsFillCloudUploadFill className="uploadIcon" />
@@ -103,7 +103,10 @@ const Navbar = () => {
           <div className="logout .no_active">
             <li>
               <Link to="">
-                <IoLogOut className="log_out .no_active" onClick={handelSignOut} />
+                <IoLogOut
+                  className="log_out .no_active"
+                  onClick={handelSignOut}
+                />
               </Link>
             </li>
           </div>

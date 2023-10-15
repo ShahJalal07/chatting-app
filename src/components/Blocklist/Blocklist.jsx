@@ -1,5 +1,4 @@
 import { BsThreeDotsVertical } from "react-icons/bs";
-
 import "./Blocklist.css";
 const Blocklist = () => {
   return (

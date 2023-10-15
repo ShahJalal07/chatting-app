@@ -199,7 +199,7 @@ const SignUpSignIn = () => {
               setOpen(false);
             })
             .then (()=>{
-              set(ref(db, 'users/' ), {
+              set(ref(db, 'users/' + auth.currentUser.uid ), {
                 username: user,
                 email: email,
                 // profile_picture : imageUrl

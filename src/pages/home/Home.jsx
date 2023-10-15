@@ -23,7 +23,7 @@ import {
   ref,
   uploadString,
 } from "firebase/storage";
-import { getAuth } from "firebase/auth";
+import { getAuth, updateProfile } from "firebase/auth";
 import { userLoginInfo } from "../../slices/userSlice";
 import { blurClassAdd } from "../../slices/userSlice";
 
@@ -84,6 +84,9 @@ const home = () => {
           console.log(downLoadURL);
           dispatch(blurClassAdd(false));
           setImage("");
+          updateProfile(auth.currentUser, {
+            photoURL: downLoadURL,
+          });
           dispatch(userLoginInfo({ ...data, photoURL: downLoadURL }));
           localStorage.setItem(
             "user",
